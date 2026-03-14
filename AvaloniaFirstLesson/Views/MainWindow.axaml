@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaFirstLesson.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="560" d:DesignHeight="750"
+        x:Class="AvaloniaFirstLesson.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaFirstLesson">
+
+    <Grid RowDefinitions="1* 100 100 100 100 100 2*" Background="AntiqueWhite">
+
+        <TextBlock Grid.Row="0" FontSize="30"  FontWeight="ExtraBlack" HorizontalAlignment="Center" Margin="40" >Sign Up</TextBlock>
+
+        <TextBox Grid.Row="1" Text="{Binding FirstName}" Width="400" Margin="30" Height="50" Watermark="First Name" BorderThickness="2" HorizontalContentAlignment="Center" CornerRadius="10" ></TextBox> 
+
+        <TextBox Grid.Row="2" Text="{Binding Email}" Margin="30" Width="400" Height="50" Watermark="Email" BorderThickness="2" HorizontalContentAlignment="Center" CornerRadius="10" ></TextBox> 
+
+        <TextBox Grid.Row="3" Text="{Binding Password}"  Margin="30" Width="400" Height="50" Watermark="Password" BorderThickness="2" HorizontalContentAlignment="Center" CornerRadius="10" ></TextBox>
+
+             <StackPanel Grid.Row="4" Orientation="Vertical">
+                <CheckBox HorizontalAlignment="Center">"I accept all terms and conditions"</CheckBox>
+            </StackPanel>
+
+        <Button Command="{Binding SignUpCommand}" Grid.Row="5" Background="WhiteSmoke" Width="400" HorizontalAlignment="Center" CornerRadius="10">
+			<TextBlock FontSize="35" FontWeight="Bold"  HorizontalAlignment="Center" >Signup</TextBlock></Button> 
+
+        <TextBlock Grid.Row="6" Text="{Binding SuccessMessage}" Foreground="Green" 
+           HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+
+    </Grid>
+
+
+</Window>
