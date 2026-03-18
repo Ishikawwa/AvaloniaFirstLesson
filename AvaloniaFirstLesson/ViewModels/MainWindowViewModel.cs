@@ -7,24 +7,67 @@ namespace AvaloniaFirstLesson.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        [ObservableProperty] private string _firstName = "";
-        [ObservableProperty] private string _email = "";
-        [ObservableProperty] private string _password = "";
+        private string _firstName;
+        private string _email = "";
+        private string _password = "";
         [ObservableProperty] private string _successMessage = "";
+        [ObservableProperty] private string _errorMessage = "";
+
+        public bool _isErrorVisible => _errorMessage != "";
+        public bool _isSuccessVisible => _errorMessage != "";
+
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                SetProperty(ref _firstName, value);
+                SuccessMessage = "";
+            }
+        }
+        public string Email
+        {
+            get => _email;
+            set
+            {  
+                SetProperty(ref _email, value);
+                SuccessMessage = "";
+            }
+        }
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                SetProperty(ref _password, value);
+                SuccessMessage = "";
+            }
+        }
 
         [RelayCommand]
         private void SignUp()
         {
-            if (string.IsNullOrWhiteSpace(FirstName) ||
-                string.IsNullOrWhiteSpace(Email) ||
-                string.IsNullOrWhiteSpace(Password))
-                return;
 
-            Debug.WriteLine($"{FirstName}, {Email}, {Password}");
+            if (string.IsNullOrWhiteSpace(_firstName))
+            {
+                ErrorMessage = "Please enter your first name!";
+            }
+            else if (string.IsNullOrWhiteSpace(_email))
+            {
+                ErrorMessage = "Please enter your email!";
+            }
+            else if (string.IsNullOrWhiteSpace(_password))
+            {
+                ErrorMessage = "Please enter your password!";
+            }
+
+            Debug.WriteLine($"{_firstName}, {_email}, {_password}");
 
             FirstName = "";
             Email = "";
             Password = "";
+
+
             SuccessMessage = "Вы успешно авторизовались";
         }
     }

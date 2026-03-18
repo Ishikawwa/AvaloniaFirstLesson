@@ -26,8 +26,12 @@
         <Button Command="{Binding SignUpCommand}" Grid.Row="5" Background="WhiteSmoke" Width="400" HorizontalAlignment="Center" CornerRadius="10">
 			<TextBlock FontSize="35" FontWeight="Bold"  HorizontalAlignment="Center" >Signup</TextBlock></Button> 
 
-        <TextBlock Grid.Row="6" Text="{Binding SuccessMessage}" Foreground="Green" 
+        <TextBlock Grid.Row="6" Text="{Binding SuccessMessage}" IsVisible="{Binding _isSuccessVisible}" Foreground="Green" 
            HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                
+        <TextBlock Grid.Row="6" Text="{Binding ErrorMessage}" IsVisible="{Binding _isErrorVisible}" Foreground="Red" 
+           HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+
 
     </Grid>
 
